@@ -10,9 +10,9 @@ class Solution:
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
 
-        epsilon = 1e-7
+        eps = 1e-7
         n = len(y_true)
-        y_pred = y_pred + epsilon
+        y_pred = y_pred + eps
         true = y_true*np.log(y_pred)
         false = (1-y_true)*np.log(1-y_pred)
         return np.round((-1/n)*np.sum(true+false),4)
@@ -25,9 +25,9 @@ class Solution:
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
 
-        epsilon = 1e-7
+        eps = 1e-7
         n = len(y_true)
-        y_pred = y_pred + epsilon
+        y_pred = y_pred + eps
         loss = y_true*np.log(y_pred)
         return np.round((-1/n)*np.sum(loss),4)
         
