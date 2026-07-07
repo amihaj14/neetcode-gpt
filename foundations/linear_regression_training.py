@@ -21,7 +21,6 @@ class Solution:
 
         for _ in range(num_iterations):
             model_prediction = self.get_model_prediction(X, initial_weights)
-            print(model_prediction)
             for j in range(len(initial_weights)):
                 gradient = self.get_derivative(model_prediction, Y, len(X), X, j)
                 initial_weights[j] -= self.learning_rate * gradient
