@@ -17,12 +17,13 @@ class Solution:
         z = np.dot(x,w) + b
 
         if activation == "sigmoid":
-            return np.round(1/(1+np.exp(-z)),5)
+            result = np.round(1/(1+np.exp(-z)),5)
 
         elif activation == "relu":
-            return np.round(max(0.0,z),5)
+            result = np.round(max(0.0,z),5)
         
         else:
-            print("Enter either sigmoid or relu for the activation")
-            return
+            result = z
+
+        return np.round(result, 5)
         
