@@ -10,8 +10,11 @@ class Solution:
         error = y_hat - y_true
 
         loss = 0.5*(error)**2
-        gradw = np.round((error)*y_hat*(1-y_hat)*x,5)
-        gradb = np.round((error)*y_hat*(1-y_hat),5)
+
+        delta = (error)*y_hat*(1-y_hat)
+
+        gradw = np.round(delta*x,5)
+        gradb = np.round(delta,5)
 
         return (gradw, gradb)
         
