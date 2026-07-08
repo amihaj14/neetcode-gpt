@@ -26,21 +26,21 @@ class Solution:
         y_true = np.array(y_true)
 
         #Forward propagation
-        z1 = np.dot(W1,x) + b1
+        z1 = W1 @ x + b1
         a1 = np.maximum(0,z1)
-        z2 = np.dot(W2,a1) + b2
+        z2 = W2 @ a1 + b2
         loss = np.mean((z2-y_true)**2)
 
         #Backward propagation
         n = len(y_true)
         dz2 = 2*(z2 - y_true)/n
-        dW2 = np.dot(dz2.reshape(-1,1), a1.reshape(1,-1))
+        dW2 = dz2.reshape(-1,1) @ a1.reshape(1,-1)
         db2 = dz2
 
-        da1 = np.dot(dz2.reshape(1,-1), W2)
+        da1 = dz2.reshape(1,-1) @ W2
         da1 = da1.flatten()
         dz1 = da1*(z1>0).astype(float)
-        dW1 = np.dot(dz1.reshape(-1,1), x.reshape(1,-1))
+        dW1 = dz1.reshape(-1,1) @ x.reshape(1,-1)
         db1 = dz1
 
         return {
