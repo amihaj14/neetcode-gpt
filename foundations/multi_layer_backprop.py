@@ -26,13 +26,13 @@ class Solution:
         y_true = np.array(y_true)
 
         #Forward propagation
-        z1 = np.dot(x,W1.T) + b1
+        z1 = np.dot(W1,x) + b1
         a1 = np.maximum(0,z1)
-        z2 = np.dot(a1,W2.T) + b2
+        z2 = np.dot(W2,a1) + b2
         loss = np.mean((z2-y_true)**2)
 
         #Backward propagation
-        n = len(y_true) if y_true > 0 else 1
+        n = len(y_true)
         dz2 = 2*(z2 - y_true)/n
         dW2 = np.dot(dz2.reshape(-1,1), a1.reshape(1,-1))
         db2 = dz2
