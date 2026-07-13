@@ -8,7 +8,8 @@ class Solution:
         size = to_reshape.size()
         m = size[0]
         n = size[1]
-        return to_reshape.reshape((m*n)//2,2)
+        resize = to_reshape.reshape((m*n)//2,2)
+        return torch.round(resize,decimals=4)
 
     def average(self, to_avg: TensorType[float]) -> TensorType[float]:
         return torch.mean(to_avg, dim=0)
