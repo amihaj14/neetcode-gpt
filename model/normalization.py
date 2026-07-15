@@ -5,8 +5,8 @@ from numpy.typing import NDArray
 class Solution:
     def forward(self, x: NDArray[np.float64], gamma: NDArray[np.float64], beta: NDArray[np.float64]) -> NDArray[np.float64]:
         eps = 1e-5
-        mean = np.sum(x)/len(x) 
-        var = np.sum((x-mean)**2)/len(x)
+        mean = np.mean(x, axis=0) 
+        var = np.var(x, axis=0)
 
         x_hat = (x - mean)/np.sqrt(var+eps)
         scale_shift = gamma*x_hat + beta
