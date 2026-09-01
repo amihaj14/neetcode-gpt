@@ -15,9 +15,6 @@ class MultiHeadedSelfAttention(nn.Module):
         
 
     def forward(self, embedded: TensorType[float]) -> TensorType[float]:
-        # Run each head on the input, concatenate outputs along dim=2
-        # Pass concatenated result through the output projection (W_O)
-        # Return result rounded to 4 decimal places
         head_out = []
         for head in self.att_heads:
             head_out.append(head(embedded))
